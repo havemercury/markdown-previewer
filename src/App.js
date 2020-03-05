@@ -10,7 +10,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '# Hello'
+      value:
+        '# Header\n\n## Subheader\n\n[HaveMercury\'s GitHub](https://github.com/havemercury)\n\nThis is an inline ```code``` test.\n\n```js\nlet string = "I am a codeblock test."\n```\n\n**Bold Text**\n\n1. List item 1\n2. List item 2\n\n> I\'ve always been more interested.\n\n![Alt Text](https://pbs.twimg.com/profile_images/1212965785972420611/PZg1TDmp_400x400.jpg)'
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,7 +22,7 @@ class App extends React.Component {
   }
 
   render() {
-    const clean = DOMPurify.sanitize(this.state.value);
+    const clean = DOMPurify.sanitize(this.state.value).replace(/&gt;+/g, '>');
     return (
       <div className='App grid'>
         <div className='col-1 heading'>Editor</div>
